@@ -94,10 +94,9 @@ const saleProducts = products.map((products) => ({ ...products, price: products.
 */
 
 //CODE HERE
-let blueProducts = saleProducts.filter(element)
-if (blueProducts.includes('blue')) {
-  // return (saleProducts)
-}
+const blueProducts = saleProducts.filter(function (element) {
+  return element.color.includes('blue');
+})
 
 ////////////////////PROBLEM 4////////////////////
 /*
@@ -107,7 +106,10 @@ if (blueProducts.includes('blue')) {
 */
 
 //CODE HERE
-
+const orderTotal = blueProducts.reduce(function (acc, element) {
+  return (acc += element.price)
+}, 0)
+console.log(orderTotal);
 //////////////////////////////////PROBLEMS 5-8//////////////////////////////////
 /*
   For these problems we will be using the objects below, contactInfo and shippingInfo,
@@ -137,7 +139,7 @@ const shippingInfo = {
 */
 
 //CODE HERE
-
+let helensInfo = Object.assign(contactInfo, shippingInfo);
 ////////////////////PROBLEM 6////////////////////
 /*
   Helen has a daughter named Ellen that lives at the same address.
@@ -146,13 +148,15 @@ const shippingInfo = {
 */
 
 //CODE HERE
-
+let ellensInfo = { ...helensInfo, name: 'Ellen', email: 'ellen@email.com' };
 ////////////////////PROBLEM 7////////////////////
 /*
   Save Ellen's email to a new variable using destructuring.
 */
 
 //CODE HERE
+let { email } = ellensInfo
+console.log(email)
 
 ////////////////////PROBLEM 8////////////////////
 /*
@@ -161,7 +165,8 @@ const shippingInfo = {
 */
 
 //CODE HERE
-
+let { zipCode, state } = shippingInfo
+console.log(zipCode, state)
 //////////////////////////////////PROBLEMS 9-11//////////////////////////////////
 /*
   Use the userInfo object below to complete problems 9-11.
@@ -223,7 +228,7 @@ const userInfo = {
 */
 
 //CODE HERE
-
+let shouldAlert = userInfo.settings.alerts
 ////////////////////PROBLEM 10////////////////////
 /*
   Set the value of topic below to the last item in gn@rly_c0der_007's topics array
@@ -231,7 +236,7 @@ const userInfo = {
 */
 
 //CODE HERE
-
+let topic = userInfo.topics[3]
 ////////////////////PROBLEM 11////////////////////
 /*
   Set the value of commenterId below to the userId of the first response to
@@ -239,7 +244,7 @@ const userInfo = {
 */
 
 //CODE HERE
-
+let commenterId = userInfo.comments[1].responses[0].userId
 ////////////////////PROBLEM 12////////////////////
 /*
   Create an object called 'person' that has the following properties.
@@ -258,7 +263,30 @@ const userInfo = {
 */
 
 //CODE HERE
-
+let person = {
+  name: 'Daniel',
+  age: 18,
+  jobs: ['Refrigeration Tech', 'Hvac Technician', 'Construction'],
+  birthday: function () {
+    this.age++;
+    console.log(this.age)
+  },
+  favorites: {
+    color: 'red',
+    number: 112,
+    book: 'Maze Runner'
+  },
+  kids: [
+    {
+      name: 'Tom',
+      age: 5
+    },
+    {
+      name: 'Bob',
+      age: 3
+    }
+  ]
+}
 //////////////////////////////////PROBLEMS 13-14//////////////////////////////////
 /*
   For the last two problems, you will be determining the
@@ -280,10 +308,10 @@ const workout = {
   },
 }
 
-//let context1 = myFunc
-//let context1 = window
-//let context1 = global
-// let context1 = workout
+// let context1 = myFunc
+// let context1 = window
+// let context1 = global
+let context1 = workout;
 
 ////////////////////PROBLEM 14////////////////////
 /*
@@ -295,7 +323,7 @@ function myFunc() {
   return this
 }
 
-//let context2 = myFunc
-// let context2 = window
-//let context2 = global
-//let context2 = workout
+// let context2 = myFunc
+let context2 = window
+// let context2 = global
+// let context2 = workout
